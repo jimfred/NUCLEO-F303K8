@@ -12,3 +12,7 @@ Collection of code for Nucleo-F303k8 board
 *  TIM2 interrupt is called after 5 button presses.
 *  To debounce the button, LL_TIM_ETR_FILTER_FDIV32_N8 is used.
 *  No HAL - all LL (Low Level).
+
+## uart_ll_polled
+* echos UART2 to the ST-Link USB Serial port. 
+* Uses polled mode with about 3 low-level APIs.

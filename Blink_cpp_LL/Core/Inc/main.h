@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under BSD 3-Clause license,
@@ -45,6 +45,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "../Src/GpioFast.h"
 
 /* USER CODE END Includes */
 
@@ -100,7 +101,11 @@ void Error_Handler(void);
                                                                  0 bit  for subpriority */
 #endif
 /* USER CODE BEGIN Private defines */
-extern unsigned ms_cnt;
+
+GPIO_output_functions(LD3_Green_LED);
+GPIO_input_functions(PB1);
+extern uint32_t sys_ticks;
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

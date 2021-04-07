@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.cpp
+  * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -42,7 +42,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint32_t sys_ticks;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,7 +94,6 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  SysTick->CTRL |= SysTick_CTRL_TICKINT_Msk;
 
   /* USER CODE END 2 */
 
@@ -102,7 +101,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  bool b = (sys_ticks >> (PB1_get() ? 6 : 8)) & 1;
+	  uint32_t ticks = HAL_GetTick();
+	  bool b = (ticks >> (PB1_get() ? 6 : 8)) & 1;
 
 	  LD3_Green_LED_set(b);
 
